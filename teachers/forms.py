@@ -1,59 +1,51 @@
 from django import forms
-from .models import Student
+from .models import Teacher
 
 
-class StudentForm(forms.ModelForm):
+class TeacherForm(forms.ModelForm):
     class Meta:
-        model = Student
-        fields = ['first_name', 'last_name', 'date_of_birth', 'gender', 'email', 'phone', 'group', 'grade', 'address', 'parent_name', 'parent_phone', 'parent_email', 'relationship', 'photo']
+        model = Teacher
+        fields = ['first_name', 'last_name', 'department', 'subjects', 'qualification', 'position', 'email', 'phone', 'address', 'join_date', 'employment_type', 'photo' ]
         widgets = {
             'first_name': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
-                'placeholder': 'Enter first name'
+                'placeholder': 'Enter first name',
+                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
             'last_name': forms.TextInput(attrs={
-                'placeholder': 'Enter last name',
+                'placeholder': 'Enter last  name',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'date_of_birth': forms.DateInput(attrs={
-                'type': 'date',
+            'department': forms.Select(attrs={
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'gender': forms.Select(attrs={
+            'subjects': forms.SelectMultiple(attrs={
+                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+            }),
+            'qualification': forms.TextInput(attrs={
+                'placeholder': 'Enter qualification',
+                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+            }),
+            'position': forms.TextInput(attrs={
+                'placeholder': 'Enter position',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
             'email': forms.EmailInput(attrs={
-                'placeholder': 'Enter email address',
+                'placeholder': 'Enter email',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
             'phone': forms.TextInput(attrs={
                 'placeholder': 'Enter phone number',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'group': forms.Select(attrs={
-                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
-            }),
-            'grade': forms.Select(attrs={
-                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
-            }),
             'address': forms.Textarea(attrs={
-                'placeholder': 'Enter full address',
+                'placeholder': 'Enter address',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'parent_name': forms.TextInput(attrs={
-                'placeholder': 'Enter parent/guardian name',
+            'join_date': forms.DateInput(attrs={
+                'type': 'date',
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'parent_phone': forms.TextInput(attrs={
-                'placeholder': 'Enter parent/guardian phone',
-                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
-            }),
-            'parent_email': forms.EmailInput(attrs={
-                'placeholder': 'Enter parent/guardian email address',
-                'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
-            }),
-            'relationship': forms.TextInput(attrs={
-                'placeholder': 'Enter parent/guardian relationship',
+            'employment_type': forms.Select(attrs={
                 'class': 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
             'photo': forms.FileInput(attrs={
